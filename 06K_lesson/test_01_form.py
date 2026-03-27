@@ -3,9 +3,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.edge.service import Service
+import os
 
 
-EDGE_DRIVER_PATH = r"C:\Users\User\Desktop\Homework_Python\msedgedriver.exe"
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+EDGE_DRIVER_PATH = os.path.join(PROJECT_DIR, "msedgedriver.exe")
+
 
 FORM_DATA = {
     "first-name": "Иван",

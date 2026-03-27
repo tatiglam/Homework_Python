@@ -3,18 +3,16 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.firefox.service import Service
-from selenium.webdriver.firefox.options import Options
-from webdriver_manager.firefox import GeckoDriverManager
+import os
+
+
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+GECKO_DRIVER_PATH = os.path.join(PROJECT_DIR, "geckodriver.exe")
 
 
 def test_shop():
-    firefox_options = Options()
-    firefox_options.binary_location = (
-        "C:\\Program Files\\Mozilla Firefox\\firefox.exe"
-    )
-
-    service = Service(GeckoDriverManager().install())
-    driver = webdriver.Firefox(service=service, options=firefox_options)
+    service = Service(GECKO_DRIVER_PATH)
+    driver = webdriver.Firefox(service=service)
 
     try:
         driver.get("https://www.saucedemo.com/")
