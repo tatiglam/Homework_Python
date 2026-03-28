@@ -12,7 +12,7 @@ class TestCreateProject:
         assert "id" in response.json()
 
         project_id = response.json()["id"]
-        
+
         get_response = api_client.get_project(project_id)
         assert get_response.status_code == 200
         assert get_response.json()["title"] == title

@@ -9,7 +9,7 @@ class TestUpdateProject:
         response = api_client.update_project(test_project, title=new_title)
 
         assert response.status_code == 200
-        
+
         get_response = api_client.get_project(test_project)
         assert get_response.status_code == 200
         assert get_response.json()["title"] == new_title

@@ -1,4 +1,3 @@
-import pytest
 from config import Config
 from api_client import YougileAPI
 
