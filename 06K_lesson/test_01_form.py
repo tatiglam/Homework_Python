@@ -3,11 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.edge.service import Service
-import os
-
-
-PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-EDGE_DRIVER_PATH = os.path.join(PROJECT_DIR, "msedgedriver.exe")
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
 
 
 FORM_DATA = {
@@ -38,7 +34,7 @@ FIELD_SELECTORS = {
 
 
 def test_form_validation():
-    service = Service(EDGE_DRIVER_PATH)
+    service = Service(EdgeChromiumDriverManager().install())
     driver = webdriver.Edge(service=service)
 
     try:

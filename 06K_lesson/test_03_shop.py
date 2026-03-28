@@ -3,15 +3,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.firefox.service import Service
-import os
-
-
-PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-GECKO_DRIVER_PATH = os.path.join(PROJECT_DIR, "geckodriver.exe")
+from webdriver_manager.firefox import GeckoDriverManager
 
 
 def test_shop():
-    service = Service(GECKO_DRIVER_PATH)
+    service = Service(GeckoDriverManager().install())
     driver = webdriver.Firefox(service=service)
 
     try:
@@ -54,9 +50,7 @@ def test_shop():
         total_text = total_element.text
         total_value = total_text.split("$")[1]
 
-        assert total_value == "58.29", (
-            f"Ожидалось 58.29, получено {total_value}"
-        )
+        assert total_value == "58.29"
 
     finally:
         driver.quit()
